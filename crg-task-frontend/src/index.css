@@ -9,8 +9,12 @@
 
 :root {
   --crgtask-bg-color-primary: #22BA73;
+  --crgtask-bg-color-secondary: #3483FA;
 
   --crgtask-font-color-primary: #FFFFFF;
+  --crgtask-font-color-secondary: #22BA73;
+
+  --crgtask-color-error: #F33;
 }
 
 .crgtask-container {

@@ -1,0 +1,28 @@
+h1 {
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--crgtask-font-color-secondary);
+    margin-top: 45px;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 45px;
+}
+
+button {
+    display: block;
+}
+
+.crgtask-welcome-icon {
+    align-items: start;
+    margin-top: 45px;
+    height: 100px;
+    width: 100px;
+}
+
+#crgtask-home-section {
+    padding: 0 20px;
+}
