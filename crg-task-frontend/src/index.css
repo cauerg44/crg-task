@@ -10,9 +10,14 @@
 :root {
   --crgtask-bg-color-primary: #22BA73;
   --crgtask-bg-color-secondary: #3483FA;
+  --crgtask-bg-color-tertiary: #FFFFFF;
+  --crgtask-bg-color-quartenary: #8BE391;
+  --crgtask-bg-color-quintenary: #25A650;
 
   --crgtask-font-color-primary: #FFFFFF;
   --crgtask-font-color-secondary: #22BA73;
+  --crgtask-font-color-tertiary: #3483FA;
+  --crgtask-font-color-quartenary: #EEFF00;
 
   --crgtask-color-error: #F33;
 }
@@ -26,4 +31,12 @@ a, a:hover {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.mt45 {
+  margin-top: 45px;
+}
+
+.dinline {
+  display: inline;
 }

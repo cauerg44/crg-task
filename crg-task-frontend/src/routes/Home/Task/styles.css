@@ -1,7 +1,57 @@
-.crgtask-not-foun-page-section h1 {
-    font-size: 48px;
-    font-weight: 700;
-    color: var(--crgtask-color-error);
-    margin-top: 45px;
-    margin-bottom: 45px;
+.crgtask-task-card {
+    padding: 10px;
+    max-width: 580px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 25px;
+    background-color: var(--crgtask-bg-color-quartenary);
+    border-radius: 15px;
+}
+
+.crgtask-task-card h4 {
+    font-size: 30px;
+    text-align: center;
+}
+
+.crgtask-task-card p {
+    font-size: 20px;
+    color: var(--crgtask-bg-color-tertiary);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.crgtask-line-bottom {
+    justify-content: center;
+    border-bottom: 1px solid white;
+    margin: 5px;
+}
+
+.crgtask-task-category {
+    margin: 10px 10px;
+    width: 140px;
+    height: 45px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--crgtask-bg-color-quintenary);
+    color: var(--crgtask-font-color-quartenary);
+}
+
+.crgtask-task-categories {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#crgtask-task-section-page {
+    padding: 0 20px;
+    align-items: center;
+}
+
+@media(max-width: 320px) {
+    .crgtask-task-category {
+        width: 100%;
+    }
 }
