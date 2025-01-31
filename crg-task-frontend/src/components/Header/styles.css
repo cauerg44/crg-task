@@ -13,14 +13,17 @@ nav {
     justify-content: space-between;
 }
 
-.crgtask-navlinks {
-    display: flex;
+.menu-item {
+    font-size: 18px;
+    padding: 15px;
 }
 
-.crgtask-navlinks p {
-    margin: 0;
-    padding: 15px;
-    font-size: 18px;
+.menu-active {
+    font-weight: 700;
+}
+
+.crgtask-navlinks {
+    display: flex;
     font-weight: 400;
     color: var(--crgtask-font-color-primary);
 }

@@ -17,6 +17,11 @@
   --crgtask-color-error: #F33;
 }
 
+a, a:hover {
+  color: unset;
+  text-decoration: none;
+}
+
 .crgtask-container {
   width: 100%;
   max-width: 1200px;
