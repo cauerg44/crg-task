@@ -8,7 +8,7 @@ export default function HomeBody() {
         <>
             <main id='crgtask-home-section'>
                 <section  className='crgtask-container'>
-                    <h1>Seja bem-vindo(a)!</h1>
+                    <h1>Seja bem-vindo Cauê!</h1>
                     <p>Começe a gerenciar suas tarefas e deixe sua rotina mais organizada!</p>
                     <ButtonPrimary />
                     <img className='crgtask-welcome-icon' src={welcomeIcon} alt="Seja bem vindo!" />
