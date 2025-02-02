@@ -31,4 +31,24 @@ public class TaskService {
                 () -> new ResourceNotFoundException("Resource not found"));
         return new TaskDTO(task);
     }
+
+    @Transactional
+    public TaskDTO insert(TaskDTO dto) {
+        Task entity = new Task();
+        copyDtoToEntity(dto, entity);
+        entity = repository.save(entity);
+        return new TaskDTO(entity);
+    }
+
+    private void copyDtoToEntity(TaskDTO dto, Task entity) {
+        entity.setTitle(dto.getTitle());
+        entity.setDescription(dto.getDescription());
+
+        entity.getCategories().clear();
+        for (CategoryDTO catDto : dto.getCategories()) {
+            Category cat = new Category();
+            cat.setId(catDto.getId());
+            entity.getCategories().add(cat);
+        }
+    }
 }
