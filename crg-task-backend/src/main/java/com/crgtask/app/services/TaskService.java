@@ -57,12 +57,10 @@ public class TaskService {
 
     @Transactional(propagation = Propagation.SUPPORTS)
     public void delete(Long id) {
-        try {
-            repository.deleteById(id);
-        }
-        catch (EmptyResultDataAccessException e) {
+        if (!repository.existsById(id)) {
             throw new ResourceNotFoundException("Resource not found");
         }
+        repository.deleteById(id);
     }
 
     private void copyDtoToEntity(TaskDTO dto, Task entity) {
