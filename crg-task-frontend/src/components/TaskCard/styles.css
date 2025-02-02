@@ -32,10 +32,6 @@
 }
 
 @media(max-width: 400px) {
-    .crgtask-task-category {
-        width: 100%;
-    }
-
     .crgtask-task-card h4 {
         font-size: 20px;
         text-align: center;

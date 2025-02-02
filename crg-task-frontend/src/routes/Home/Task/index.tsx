@@ -7,12 +7,10 @@ export default function Task() {
     return (
         <main id='crgtask-task-section-page'>
             <section className='crgtask-container mt45'>
-                <div className='crgtask-task-card'>
-                    {
-                        taskService.findAll().map(
-                            task => <TaskCard key={task.id} task={task} />)
-                    }
-                </div>
+                {
+                    taskService.findAll().map(
+                        task => <TaskCard key={task.id} task={task} />)
+                }
             </section>
         </main>
     )

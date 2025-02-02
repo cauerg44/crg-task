@@ -11,3 +11,9 @@
     background-color: var(--crgtask-bg-color-quintenary);
     color: var(--crgtask-font-color-quartenary);
 }
+
+@media(max-width: 415px) {
+    .crgtask-task-category {
+        width: 100%;
+    }
+}
