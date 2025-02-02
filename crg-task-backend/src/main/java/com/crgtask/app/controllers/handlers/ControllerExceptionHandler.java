@@ -2,7 +2,6 @@ package com.crgtask.app.controllers.handlers;
 
 import java.time.Instant;
 
-
 import com.crgtask.app.dto.CustomErrorDTO;
 import com.crgtask.app.dto.ValidationErrorDTO;
 import com.crgtask.app.services.exceptions.DatabaseException;

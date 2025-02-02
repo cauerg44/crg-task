@@ -2,6 +2,9 @@ package com.crgtask.app.dto;
 
 import com.crgtask.app.entities.Category;
 import com.crgtask.app.entities.Task;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +12,16 @@ import java.util.List;
 public class TaskDTO {
 
     private Long id;
+
+    @Size(min = 3, max = 30, message = "O título precisa ter de 3 a 30 caracteres")
+    @NotBlank(message = "Campo requerido")
     private String title;
+
+    @Size(min = 10, message = "Descrição precisa ter no mínimo 10 caracteres")
+    @NotBlank(message = "Campo requerido")
     private String description;
 
+    @NotEmpty(message = "Deve ter pelo menos uma categoria")
     private List<CategoryDTO> categories = new ArrayList<>();
 
     public TaskDTO() {

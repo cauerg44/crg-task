@@ -1,11 +1,10 @@
 package com.crgtask.app.controllers;
 
 import com.crgtask.app.dto.TaskDTO;
-import com.crgtask.app.entities.Task;
 import com.crgtask.app.services.TaskService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -32,7 +31,7 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<TaskDTO> insert(@RequestBody TaskDTO dto) {
+    public ResponseEntity<TaskDTO> insert(@Valid @RequestBody TaskDTO dto) {
         dto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -42,7 +41,7 @@ public class TaskController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<TaskDTO> update(@PathVariable Long id, @RequestBody TaskDTO dto) {
+    public ResponseEntity<TaskDTO> update(@PathVariable Long id, @Valid @RequestBody TaskDTO dto) {
         dto = service.update(id, dto);
         return ResponseEntity.ok(dto);
     }
