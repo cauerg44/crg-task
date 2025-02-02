@@ -22,10 +22,13 @@ public class Task {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
+    public Task() {
+    }
+
     public Task(Long id, String title, String description) {
         this.id = id;
-        this.description = description;
         this.title = title;
+        this.description = description;
     }
 
     public Long getId() {

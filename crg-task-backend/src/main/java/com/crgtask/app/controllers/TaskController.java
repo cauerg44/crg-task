@@ -1,7 +1,7 @@
 package com.crgtask.app.controllers;
 
-import com.crgtask.app.dto.CategoryDTO;
-import com.crgtask.app.services.CategoryService;
+import com.crgtask.app.dto.TaskDTO;
+import com.crgtask.app.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/categories")
-public class CategoryController {
+@RequestMapping(value = "/tasks")
+public class TaskController {
 
     @Autowired
-    private CategoryService service;
+    private TaskService service;
 
     @GetMapping
-    public ResponseEntity<List<CategoryDTO>> findAll() {
-        List<CategoryDTO> result = service.findAll();
-        return ResponseEntity.ok(result);
+    public ResponseEntity<List<TaskDTO>> findAll() {
+        List<TaskDTO> list = service.findAll();
+        return ResponseEntity.ok(list);
     }
 }
