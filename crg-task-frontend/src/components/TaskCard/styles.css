@@ -5,6 +5,7 @@
     height: auto;
     background-color: var(--crgtask-bg-color-quartenary);
     border-radius: 15px;
+    margin-bottom: 20px;
 }
 
 .crgtask-task-card h4 {
@@ -23,20 +24,6 @@
     justify-content: center;
     border-bottom: 1px solid white;
     margin: 5px;
-}
-
-.crgtask-task-category {
-    margin: 10px;
-    width: 140px;
-    height: 45px;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    border-radius: 10px;
-    background-color: var(--crgtask-bg-color-quintenary);
-    color: var(--crgtask-font-color-quartenary);
 }
 
 .crgtask-task-categories {

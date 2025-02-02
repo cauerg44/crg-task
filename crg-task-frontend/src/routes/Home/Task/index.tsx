@@ -1,5 +1,6 @@
-import TaskCard from '../../../components/TaskCard'
 import './styles.css'
+import * as taskService from '../../../services/task-service.ts'
+import TaskCard from '../../../components/TaskCard/index.tsx'
 
 export default function Task() {
 
@@ -7,7 +8,10 @@ export default function Task() {
         <main id='crgtask-task-section-page'>
             <section className='crgtask-container mt45'>
                 <div className='crgtask-task-card'>
-                    <TaskCard />
+                    {
+                        taskService.findAll().map(
+                            task => <TaskCard key={task.id} task={task} />)
+                    }
                 </div>
             </section>
         </main>

@@ -1,0 +1,13 @@
+.crgtask-task-category {
+    margin: 10px;
+    width: 140px;
+    height: 45px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--crgtask-bg-color-quintenary);
+    color: var(--crgtask-font-color-quartenary);
+}
