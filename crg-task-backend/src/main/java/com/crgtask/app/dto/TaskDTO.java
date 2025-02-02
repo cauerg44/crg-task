@@ -3,8 +3,8 @@ package com.crgtask.app.dto;
 import com.crgtask.app.entities.Category;
 import com.crgtask.app.entities.Task;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TaskDTO {
 
@@ -14,6 +14,9 @@ public class TaskDTO {
 
     private List<CategoryDTO> categories = new ArrayList<>();
 
+    public TaskDTO() {
+    }
+
     public TaskDTO(Long id, String title, String description) {
         this.id = id;
         this.title = title;
@@ -21,9 +24,9 @@ public class TaskDTO {
     }
 
     public TaskDTO(Task entity) {
-        id = entity.getId();
-        title = entity.getTitle();
-        description = entity.getDescription();
+        this.id = entity.getId();
+        this.title = entity.getTitle();
+        this.description = entity.getDescription();
         for (Category cat : entity.getCategories()) {
             categories.add(new CategoryDTO(cat));
         }
@@ -33,24 +36,12 @@ public class TaskDTO {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public List<CategoryDTO> getCategories() {
