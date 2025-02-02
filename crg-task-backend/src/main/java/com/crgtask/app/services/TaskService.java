@@ -6,12 +6,12 @@ import com.crgtask.app.entities.Category;
 import com.crgtask.app.entities.Task;
 import com.crgtask.app.repositories.TaskRepository;
 import com.crgtask.app.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class TaskService {
@@ -38,6 +38,19 @@ public class TaskService {
         copyDtoToEntity(dto, entity);
         entity = repository.save(entity);
         return new TaskDTO(entity);
+    }
+
+    @Transactional
+    public TaskDTO update(Long id, TaskDTO dto) {
+        try {
+            Task entity = repository.getReferenceById(id);
+            copyDtoToEntity(dto, entity);
+            entity = repository.save(entity);
+            return new TaskDTO(entity);
+        }
+        catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException("Resource not found");
+        }
     }
 
     private void copyDtoToEntity(TaskDTO dto, Task entity) {

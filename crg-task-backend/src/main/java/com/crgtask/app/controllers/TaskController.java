@@ -40,4 +40,10 @@ public class TaskController {
                 .buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<TaskDTO> update(@PathVariable Long id, @RequestBody TaskDTO dto) {
+        dto = service.update(id, dto);
+        return ResponseEntity.ok(dto);
+    }
 }
