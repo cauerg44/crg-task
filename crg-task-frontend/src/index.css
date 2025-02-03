@@ -13,6 +13,7 @@
   --crgtask-bg-color-tertiary: #FFFFFF;
   --crgtask-bg-color-quartenary: #8BE391;
   --crgtask-bg-color-quintenary: #25A650;
+  --crgtask-bg-color-senary: #F33333;
 
   --crgtask-border-color-primary: #3483FA;
 
@@ -21,7 +22,7 @@
   --crgtask-font-color-tertiary: #3483FA;
   --crgtask-font-color-quartenary: #EEFF00;
 
-  --crgtask-color-error: #F33;
+  --crgtask-color-error: #F33333;
 }
 
 a, a:hover {

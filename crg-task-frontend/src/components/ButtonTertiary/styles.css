@@ -1,7 +1,7 @@
-.crgtask-btn-primary {
+.crgtask-btn-tertiary {
     height: 56px;
     width: 154px;
-    background-color: var(--crgtask-bg-color-secondary);
+    background-color: var(--crgtask-bg-color-senary);
     border: none;
     border-radius: 10px;
     font-size: 15px;

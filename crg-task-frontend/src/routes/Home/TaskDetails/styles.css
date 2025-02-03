@@ -8,13 +8,28 @@
 
 .crgtask-task-details-btn {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: start;
+    height: 200px;
+    width: 476px;
 }
 
 @media(max-width: 375px) {
     .crgtask-task-details-btn {
         width: 100%;
-        
+        align-items: center;
+    }
+}
+
+@media(max-width: 576px) {
+    .crgtask-task-details-btn {
+        width: 100%;
+        align-items: center;
+    }
+}
+
+@media(min-width: 320px) {
+    .crgtask-task-details-btn button {
+        width: 100%;
     }
 }

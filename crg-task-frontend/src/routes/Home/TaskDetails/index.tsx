@@ -4,6 +4,7 @@ import TaskCard from "../../../components/TaskCard/index.tsx";
 import * as taskService from '../../../services/task-service.ts'
 import ButtonPrimary from '../../../components/ButtonPrimary/index.tsx';
 import ButtonSecondary from '../../../components/ButtonSecondary/index.tsx';
+import ButtonTertiary from '../../../components/ButtonTertiary/index.tsx';
 
 
 export default function TaskDetails() {
@@ -21,7 +22,8 @@ export default function TaskDetails() {
                 }
                 <div className='crgtask-task-details-btn'>
                     <ButtonPrimary text='Finalizar ✅' />
-                    <ButtonSecondary text='Editar tarefa  ✏️' />
+                    <ButtonSecondary text='Editar tarefa ✏️' />
+                    <ButtonTertiary text='Deletar' />
                 </div>
             </section>
         </main>
