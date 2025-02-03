@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { TaskDTO } from '../../models/task'
 import TaskCategory from '../TaskCategory'
 import './styles.css'
@@ -9,18 +10,20 @@ type Props = {
 export default function TaskCard({ task }: Props) {
 
     return (
-        <div className='crgtask-task-card'>
-            <div className='crgtask-line-bottom'>
-                <h4>{task.title}</h4>
-                <p>{task.description}</p>
+        <Link to={`/task-details/${task.id}`}>
+            <div className='crgtask-task-card'>
+                <div className='crgtask-line-bottom'>
+                    <h4>{task.title}</h4>
+                    <p>{task.description}</p>
+                </div>
+                <div className='crgtask-task-categories'>
+                    {
+                        task.categories.map(item => (
+                            <TaskCategory key={item.id} name={item.name} />
+                        ))
+                    }
+                </div>
             </div>
-            <div className='crgtask-task-categories'>
-                {
-                    task.categories.map(item => (
-                        <TaskCategory key={item.id} name={item.name} />
-                    ))
-                }
-            </div>
-        </div>
+        </Link>
     )
 }
