@@ -1,8 +1,9 @@
-button {
+.crgtask-btn-secondary {
+    padding: 5px;
     height: 56px;
     width: 154px;
-    background-color: var(--crgtask-bg-color-secondary);
-    border: none;
+    background-color: var(--crgtask-bg-color-tertiary);
+    border: 1px solid var(--crgtask-border-color-primary);
     border-radius: 10px;
     font-size: 15px;
     font-weight: 700;

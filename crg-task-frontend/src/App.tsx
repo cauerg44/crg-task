@@ -4,6 +4,7 @@ import HomeBody from "./routes/Home/HomeBody"
 import NotFound from "./routes/Home/NotFound"
 import Task from "./routes/Home/Task"
 import About from "./routes/Home/About"
+import TaskDetails from "./routes/Home/TaskDetails"
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route index element={<Navigate to="/home" />} />
           <Route path="home" element={<HomeBody />} />
           <Route path="tasks" element={<Task />} />
+          <Route path="task-details/:taskId" element={<TaskDetails />} />
           <Route path="about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Route>

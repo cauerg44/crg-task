@@ -1,4 +1,5 @@
-button {
+.crgtask-btn-primary {
+    margin-right: 30px;
     height: 56px;
     width: 154px;
     background-color: var(--crgtask-bg-color-secondary);

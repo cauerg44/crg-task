@@ -14,6 +14,8 @@
   --crgtask-bg-color-quartenary: #8BE391;
   --crgtask-bg-color-quintenary: #25A650;
 
+  --crgtask-border-color-primary: #3483FA;
+
   --crgtask-font-color-primary: #FFFFFF;
   --crgtask-font-color-secondary: #22BA73;
   --crgtask-font-color-tertiary: #3483FA;
@@ -39,4 +41,8 @@ a, a:hover {
 
 .dinline {
   display: inline;
+}
+
+.dflex {
+  display: flex;
 }

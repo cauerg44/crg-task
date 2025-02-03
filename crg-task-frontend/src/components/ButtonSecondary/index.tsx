@@ -4,10 +4,10 @@ type Props = {
     text: string
 }
 
-export default function ButtonPrimary({ text }: Props) {
+export default function ButtonSecondary({ text }: Props) {
 
     return (
-        <button>
+        <button className='crgtask-btn-secondary'>
             {text}
         </button>
     )

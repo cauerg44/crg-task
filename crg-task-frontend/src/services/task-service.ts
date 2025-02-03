@@ -4,6 +4,10 @@ export function findAll(): TaskDTO[] {
     return tasks
 }
 
+export function findById(id: number) : TaskDTO | undefined {
+    return tasks.find(x => x.id === id)
+}
+
 const tasks: TaskDTO[] = [
     {
         "id": 1,
@@ -69,6 +73,21 @@ const tasks: TaskDTO[] = [
         "title": "Zerar a task",
         "description": "Fazer todas as tasks e fazer o pull request para ser aprovado",
         "categories": [
+            {
+                "id": 2,
+                "name": "Trabalho"
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Entregar o projeto pronto",
+        "description": "Entregar meu projeto full stack pronto para eu ser aprovado",
+        "categories": [
+            {
+                "id": 1,
+                "name": "Estudo"
+            },
             {
                 "id": 2,
                 "name": "Trabalho"

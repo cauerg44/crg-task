@@ -7,7 +7,7 @@ type Props = {
 export default function ButtonPrimary({ text }: Props) {
 
     return (
-        <button>
+        <button className='crgtask-btn-primary'>
             {text}
         </button>
     )
