@@ -5,6 +5,7 @@ import NotFound from "./routes/Home/NotFound"
 import Task from "./routes/Home/Task"
 import About from "./routes/Home/About"
 import TaskDetails from "./routes/Home/TaskDetails"
+import TaskForm from "./routes/Home/TaskForm"
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="tasks" element={<Task />} />
           <Route path="task-details/:taskId" element={<TaskDetails />} />
           <Route path="about" element={<About />} />
+          <Route path="create/task" element={<TaskForm />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
