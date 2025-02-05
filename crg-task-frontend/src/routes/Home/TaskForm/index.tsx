@@ -10,10 +10,10 @@ export default function TaskForm() {
                 <div className="crgtask-task-form-container">
                     <div>
                         <img src={formIcon} alt="Form" />
-                        <h2>Vamos adicionar mais uma tarefa?</h2>
+                        <h2>Vamos deixar nosso dia produtivo 💡</h2>
                     </div>
                     <form className="crgtask-card crgtask-form">
-                        <h2>Adicionar tarefa</h2>
+                        <h2>Dados da tarefa</h2>
                         <div className="crgtask-form-controls-container">
                             <div>
                                 <input className="crgtask-form-control" type="text" placeholder="Nome" />
