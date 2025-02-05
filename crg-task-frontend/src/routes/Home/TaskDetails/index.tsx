@@ -8,6 +8,7 @@ import ButtonTertiary from '../../../components/ButtonTertiary/index.tsx';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { TaskDTO } from '../../../models/task.ts';
+import DialogInfo from '../../../components/DialogInfo/index.tsx';
 
 
 export default function TaskDetails() {
@@ -44,6 +45,7 @@ export default function TaskDetails() {
                     <ButtonTertiary text='Deletar' />
                 </div>
             </section>
+            <DialogInfo />
         </main>
     )
 }
