@@ -10,6 +10,7 @@ INSERT INTO tb_task (title, description) VALUES ('Entender conceito SOLID', 'Ent
 INSERT INTO tb_task (title, description) VALUES ('Limpar banheiro e cozinha', 'Deixar a comida pronta, depois deixar a cozinha limpa, e deixar o banheiro limpo antes de anoitecer')
 INSERT INTO tb_task (title, description) VALUES ('Zerar a task', 'Fazer todas as tasks e fazer o pull request para ser aprovado')
 INSERT INTO tb_task (title, description) VALUES ('Entregar o projeto pronto', 'Entregar meu projeto full stack pronto para eu ser aprovado')
+INSERT INTO tb_task (title, description) VALUES ('Treinar perna e assistir aula do curso quando chegar em casa', 'Fazer um exercício constante de peito e braço, quando chegar em casa estudar e arrumar a sala de estar, e depois a cozinha')
 
 INSERT INTO tb_task_category (task_id, category_id) VALUES (1, 1);
 INSERT INTO tb_task_category (task_id, category_id) VALUES (1, 3);
@@ -20,3 +21,6 @@ INSERT INTO tb_task_category (task_id, category_id) VALUES (5, 3);
 INSERT INTO tb_task_category (task_id, category_id) VALUES (6, 2);
 INSERT INTO tb_task_category (task_id, category_id) VALUES (7, 1);
 INSERT INTO tb_task_category (task_id, category_id) VALUES (7, 2);
+INSERT INTO tb_task_category (task_id, category_id) VALUES (8, 1);
+INSERT INTO tb_task_category (task_id, category_id) VALUES (8, 3);
+INSERT INTO tb_task_category (task_id, category_id) VALUES (8, 4);

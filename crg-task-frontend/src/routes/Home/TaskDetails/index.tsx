@@ -18,7 +18,7 @@ export default function TaskDetails() {
     const [task, setTask] = useState<TaskDTO>()
 
     useEffect(() => {
-        axios.get("http://localhost:8080/tasks/6")
+        axios.get(`http://localhost:8080/tasks/${params.taskId}`)
             .then(response => {
                 console.log(response.data)
                 setTask(response.data)
