@@ -6,13 +6,28 @@ import ButtonPrimary from '../../../components/ButtonPrimary/index.tsx';
 import ButtonSecondary from '../../../components/ButtonSecondary/index.tsx';
 import ButtonTertiary from '../../../components/ButtonTertiary/index.tsx';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { TaskDTO } from '../../../models/task.ts';
+import axios from 'axios';
 
 
 export default function TaskDetails() {
 
     const params = useParams()
 
-    const task = taskService.findById(Number(params.taskId));
+    const [task, setTask] = useState<TaskDTO>()
+
+    useEffect(() => {
+        axios.get("http://localhost:8080/tasks/3")
+            .then(response => {
+                console.log(response)
+            })
+
+        const task = taskService.findById(Number(params.taskId))
+        setTask(task)
+    }, [])
+
+    // const task = taskService.findById(Number(params.taskId))
 
     return (
         <main>
