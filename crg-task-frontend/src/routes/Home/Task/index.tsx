@@ -5,6 +5,7 @@ import ButtonPrimary from '../../../components/ButtonPrimary/index.tsx';
 import { Link } from 'react-router-dom';
 
 export default function Task() {
+    
     const tasks = taskService.findAll();
 
     return (

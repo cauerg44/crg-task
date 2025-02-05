@@ -1,4 +1,4 @@
-h1 {
+.crgtask-homebody-div h1 {
     font-size: 48px;
     font-weight: 600;
     color: var(--crgtask-font-color-secondary);
@@ -6,7 +6,7 @@ h1 {
     margin-bottom: 15px;
 }
 
-p {
+.crgtask-homebody-div p {
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 45px;
@@ -25,4 +25,14 @@ button {
 
 #crgtask-home-section {
     padding: 0 20px;
+}
+
+@media(max-width: 430px) {
+    .crgtask-homebody-div h1 {
+        font-size: 28px;
+    }
+
+    .crgtask-homebody-div p {
+        font-size: 14px;
+    }
 }

@@ -9,8 +9,10 @@ export default function HomeBody() {
         <>
             <main id='crgtask-home-section'>
                 <section className='crgtask-container'>
-                    <h1>Seja bem-vindo Cauê!</h1>
-                    <p>Começe a gerenciar suas tarefas e deixe sua rotina mais organizada!</p>
+                    <div className='crgtask-homebody-div'>
+                        <h1>Seja bem-vindo Cauê!</h1>
+                        <p>Começe a gerenciar suas tarefas e deixe sua rotina mais organizada!</p>
+                    </div>
                     <Link to={"/tasks"}>
                         <ButtonPrimary text='Avançar' />
                     </Link>
