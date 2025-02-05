@@ -1,5 +1,5 @@
 import './styles.css'
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import TaskCard from "../../../components/TaskCard/index.tsx";
 import * as taskService from '../../../services/task-service.ts'
 import ButtonPrimary from '../../../components/ButtonPrimary/index.tsx';
@@ -14,6 +14,8 @@ export default function TaskDetails() {
 
     const params = useParams()
 
+    const navigate = useNavigate()
+
     const [task, setTask] = useState<TaskDTO>()
 
     useEffect(() => {
@@ -21,6 +23,9 @@ export default function TaskDetails() {
             .then(response => {
                 console.log(response.data)
                 setTask(response.data)
+            })
+            .catch(() => {
+                navigate("/tasks")
             })
     }, [params.taskId])
 
