@@ -17,6 +17,11 @@ export default function TaskDetails() {
 
     const navigate = useNavigate()
 
+    const [dialogInfoData, setDialogInfoData] = useState({
+        visible: false,
+        message: "Operação com sucesso"
+    })
+
     const [task, setTask] = useState<TaskDTO>()
 
     useEffect(() => {
@@ -30,6 +35,18 @@ export default function TaskDetails() {
             })
     }, [params.taskId])
 
+    function handleDialogInfoClose() {
+        setDialogInfoData({ ...dialogInfoData, visible: false })
+    }
+
+    function handleDeleteClick() {
+        setDialogInfoData({ ...dialogInfoData, visible: true })
+    }
+
+    function handleEditClick() {
+        navigate("/create/task")
+    }
+
     return (
         <main>
             <section id="crgtask-task-details-section" className="crgtask-container">
@@ -38,14 +55,24 @@ export default function TaskDetails() {
                     <TaskCard task={task} />
                 }
                 <div className='crgtask-task-details-btn'>
-                    <ButtonPrimary text='Finalizar ✅' />
-                    <Link to="/create/task">
-                        <ButtonSecondary text='Editar tarefa ✏️' />
-                    </Link>
-                    <ButtonTertiary text='Deletar' />
+                    <button className='bg-blue font-white'>
+                        Finalizar ✅
+                    </button>
+                        <button onClick={handleEditClick} className='bg-white font-blue'>
+                            Editar tarefa ✏️
+                        </button>
+                    <button onClick={handleDeleteClick} className='bg-red font-white'>
+                        Deletar 🗑️
+                    </button>
                 </div>
             </section>
-            <DialogInfo />
+            {
+                dialogInfoData.visible &&
+                <DialogInfo
+                    message={dialogInfoData.message}
+                    onDialogClose={handleDialogInfoClose}
+                />
+            }
         </main>
     )
 }

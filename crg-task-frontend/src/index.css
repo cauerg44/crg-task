@@ -149,3 +149,27 @@ a, a:hover {
 .crgtask-dialog-box button {
   width: 100%;
 }
+
+.crgtask-dialog-btn-container {
+  width: 100%;
+}
+
+.bg-blue {
+  background-color: var(--crgtask-bg-color-secondary);
+}
+
+.bg-white {
+  background-color: var(--crgtask-bg-color-tertiary);
+}
+
+.bg-red {
+  background-color: var(--crgtask-bg-color-senary);
+}
+
+.font-blue {
+  color: var(--crgtask-font-color-tertiary);
+}
+
+.font-white {
+  color: var(--crgtask-font-color-primary);
+}
