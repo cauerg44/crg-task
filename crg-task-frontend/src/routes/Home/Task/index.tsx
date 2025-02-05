@@ -5,14 +5,13 @@ import ButtonPrimary from '../../../components/ButtonPrimary/index.tsx';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { TaskDTO } from '../../../models/task.ts';
-import axios from 'axios';
 
 export default function Task() {
     
     const [tasks, setTasks] = useState<TaskDTO[]>([])
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/tasks`)
+        taskService.findAll()
             .then(response => {
                 console.log(response.data)
                 setTasks(response.data)
