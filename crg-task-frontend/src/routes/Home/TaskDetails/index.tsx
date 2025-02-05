@@ -18,13 +18,11 @@ export default function TaskDetails() {
     const [task, setTask] = useState<TaskDTO>()
 
     useEffect(() => {
-        axios.get("http://localhost:8080/tasks/3")
+        axios.get("http://localhost:8080/tasks/6")
             .then(response => {
-                console.log(response)
+                console.log(response.data)
+                setTask(response.data)
             })
-
-        const task = taskService.findById(Number(params.taskId))
-        setTask(task)
     }, [])
 
     // const task = taskService.findById(Number(params.taskId))
