@@ -5,6 +5,7 @@ import * as taskService from '../../../services/task-service.ts'
 import { useEffect, useState } from 'react';
 import { TaskDTO } from '../../../models/task.ts';
 import DialogInfo from '../../../components/DialogInfo/index.tsx';
+import DialogConfirmation from '../../../components/DialogConfirmation/index.tsx';
 
 
 export default function TaskDetails() {
@@ -15,7 +16,12 @@ export default function TaskDetails() {
 
     const [dialogInfoData, setDialogInfoData] = useState({
         visible: false,
-        message: "Operação com sucesso"
+        message: "Operação com sucesso!"
+    })
+
+    const [dialogConfirmationData, setDialogConfirmationData] = useState({
+        visible: false,
+        message: "Tem certeza?"
     })
 
     const [task, setTask] = useState<TaskDTO>()
@@ -36,11 +42,16 @@ export default function TaskDetails() {
     }
 
     function handleDeleteClick() {
-        setDialogInfoData({ ...dialogInfoData, visible: true })
+        setDialogConfirmationData({ ...dialogConfirmationData, visible: true })
     }
 
     function handleEditClick() {
         navigate("/create/task")
+    }
+
+    function handleDialogConfirmationAnswer(answer: boolean) {
+        console.log("Resposta", answer)
+        setDialogConfirmationData({ ...dialogConfirmationData, visible: true })
     }
 
     return (
@@ -67,6 +78,13 @@ export default function TaskDetails() {
                 <DialogInfo
                     message={dialogInfoData.message}
                     onDialogClose={handleDialogInfoClose}
+                />
+            }
+            {
+                dialogConfirmationData.visible &&
+                <DialogConfirmation
+                    message={dialogConfirmationData.message}
+                    onDialogAnswer={handleDialogConfirmationAnswer}
                 />
             }
         </main>
