@@ -32,7 +32,7 @@ export default function Task() {
                 )
                     :
                     (
-                        <h1>Não há tarefas cadastradas!</h1>
+                        <h1 className='font-gray'>Não há tarefas cadastradas!</h1>
                     )}
             </section>
         </main>

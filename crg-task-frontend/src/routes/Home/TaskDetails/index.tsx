@@ -2,10 +2,6 @@ import './styles.css'
 import { useNavigate, useParams } from "react-router-dom";
 import TaskCard from "../../../components/TaskCard/index.tsx";
 import * as taskService from '../../../services/task-service.ts'
-import ButtonPrimary from '../../../components/ButtonPrimary/index.tsx';
-import ButtonSecondary from '../../../components/ButtonSecondary/index.tsx';
-import ButtonTertiary from '../../../components/ButtonTertiary/index.tsx';
-import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { TaskDTO } from '../../../models/task.ts';
 import DialogInfo from '../../../components/DialogInfo/index.tsx';

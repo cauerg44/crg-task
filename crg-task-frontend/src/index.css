@@ -170,6 +170,10 @@ a, a:hover {
   color: var(--crgtask-font-color-tertiary);
 }
 
+.font-gray {
+  color: var(--crgtask-color-font-senary);
+}
+
 .font-white {
   color: var(--crgtask-font-color-primary);
 }
