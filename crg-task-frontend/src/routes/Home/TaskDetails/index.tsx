@@ -21,6 +21,7 @@ export default function TaskDetails() {
 
     const [dialogConfirmationData, setDialogConfirmationData] = useState({
         visible: false,
+        id: 0,
         message: "Tem certeza?"
     })
 
@@ -41,17 +42,26 @@ export default function TaskDetails() {
         setDialogInfoData({ ...dialogInfoData, visible: false })
     }
 
-    function handleDeleteClick() {
-        setDialogConfirmationData({ ...dialogConfirmationData, visible: true })
+    function handleDeleteClick(taskId: number) {
+        setDialogConfirmationData({ ...dialogConfirmationData, id: taskId, visible: true })
+    }
+
+    function handleFinishClick(taskId: number) {
+        setDialogConfirmationData({ ...dialogConfirmationData, id: taskId, visible: true })
     }
 
     function handleEditClick() {
         navigate("/create/task")
     }
 
-    function handleDialogConfirmationAnswer(answer: boolean) {
-        console.log("Resposta", answer)
-        setDialogConfirmationData({ ...dialogConfirmationData, visible: true })
+    function handleDialogConfirmationAnswer(answer: boolean, taskId: number) {
+        if (answer) {
+            taskService.deleteById(taskId)
+                .then(() => {
+                    navigate("/tasks")
+                })
+        }
+        setDialogConfirmationData({ ...dialogConfirmationData, visible: false })
     }
 
     return (
@@ -62,13 +72,13 @@ export default function TaskDetails() {
                     <TaskCard task={task} />
                 }
                 <div className='crgtask-task-details-btn'>
-                    <button className='bg-blue font-white'>
+                    <button onClick={() => handleFinishClick(task?.id)} className='bg-blue font-white'>
                         Finalizar ✅
                     </button>
                         <button onClick={handleEditClick} className='bg-white font-blue'>
                             Editar tarefa ✏️
                         </button>
-                    <button onClick={handleDeleteClick} className='bg-red font-white'>
+                    <button onClick={() => handleDeleteClick(task?.id)} className='bg-red font-white'>
                         Deletar 🗑️
                     </button>
                 </div>
@@ -83,6 +93,7 @@ export default function TaskDetails() {
             {
                 dialogConfirmationData.visible &&
                 <DialogConfirmation
+                    id={dialogConfirmationData.id}
                     message={dialogConfirmationData.message}
                     onDialogAnswer={handleDialogConfirmationAnswer}
                 />
