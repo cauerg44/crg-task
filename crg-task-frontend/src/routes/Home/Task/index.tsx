@@ -13,7 +13,6 @@ export default function Task() {
     useEffect(() => {
         taskService.findAll()
             .then(response => {
-                console.log(response.data)
                 setTasks(response.data)
             })
     }, [])
