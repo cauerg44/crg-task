@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function FormInput(props: any) {
+export default function FormTextArea(props: any) {
 
     const { 
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -7,15 +7,15 @@ export default function FormInput(props: any) {
         invalid = "false", 
         dirty = "false", 
         onTurnDirty, 
-        ...inputProps } = props;
+        ...textAreaProps } = props;
 
     function handleBluer() {
         onTurnDirty(props.name)
     }
 
     return (
-        <input
-            {...inputProps}
+        <textarea
+            {...textAreaProps}
             data-invalid={invalid}
             onBlur={handleBluer}
             data-dirty={dirty}

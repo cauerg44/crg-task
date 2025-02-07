@@ -4,6 +4,7 @@ import formIcon from '../../../assets/form-icon.svg'
 import { useEffect, useState } from 'react';
 import FormInput from '../../../components/FormInput';
 import * as forms from '../../../utils/forms.ts'
+import FormTextArea from '../../../components/FormTextArea/index.tsx';
 
 export default function TaskForm() {
 
@@ -19,6 +20,17 @@ export default function TaskForm() {
                 return /^.{3,80}$/.test(value)
             },
             message: "Favor informar um nome de 3 a 80 caracteres"
+        },
+        description: {
+            value: "",
+            id: "description",
+            name: "description",
+            type: "text",
+            placeholder: "Descrição",
+            validation: function (value: string) {
+                return /^.{10,}$/.test(value)
+            },
+            message: "A descrição deve ter pelo menos 10 caracteres"
         }
     })
 
@@ -47,8 +59,8 @@ export default function TaskForm() {
                         <h2>Dados da tarefa</h2>
                         <div className="crgtask-form-controls-container">
                             <div>
-                                <FormInput 
-                                    { ...formData.title }
+                                <FormInput
+                                    {...formData.title}
                                     className="crgtask-form-control"
                                     onChange={handleInputChange}
                                     onTurnDirty={handleTurnDirty}
@@ -62,9 +74,15 @@ export default function TaskForm() {
                                     <option value="2">Valor 2</option>
                                 </select>
                             </div>
-                            {/* <div>
-                                <textarea className="crgtask-form-control crgtask-textarea" placeholder="Descrição"></textarea>
-                            </div> */}
+                            <div>
+                                <FormTextArea
+                                    {...formData.description}
+                                    className="crgtask-form-control crgtask-textarea"
+                                    onChange={handleInputChange}
+                                    onTurnDirty={handleTurnDirty}
+                                />
+                                <div className='crgtask-form-error'>{formData.description.message}</div>
+                            </div>
                         </div>
 
                         <div className="crgtask-product-form-buttons">
