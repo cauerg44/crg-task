@@ -20,6 +20,7 @@ function App() {
           <Route path="task-details/:taskId" element={<TaskDetails />} />
           <Route path="about" element={<About />} />
           <Route path="create/task" element={<TaskForm />} />
+          <Route path="edit/task" element={<TaskForm />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
