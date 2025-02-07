@@ -1,9 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function FormInput(props: any) {
 
-    const { ...inputProps } = props;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { validation, invalid, ...inputProps } = props;
     
     return (
-        <input {...inputProps} />
+        <input {...inputProps} data-invalid={invalid}/>
     );
 }

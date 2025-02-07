@@ -24,7 +24,9 @@ export default function TaskForm() {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     function handleInputChange(event: any) {
-        setFormData(forms.update(formData, event.target.name, event.target.value))
+        const dataUpdated = forms.update(formData, event.target.name, event.target.value)
+        const dataValidated = forms.validate(dataUpdated, event.target.name)
+        setFormData(dataValidated)
     }
 
     return (
@@ -44,6 +46,7 @@ export default function TaskForm() {
                                     className="crgtask-form-control"
                                     onChange={handleInputChange}
                                 />
+                                <div className='crgtask-form-error'>{formData.title.message}</div>
                             </div>
                             <div>
                                 <select className="crgtask-form-control crgtask-select" required>

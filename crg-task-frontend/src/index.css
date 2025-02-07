@@ -28,7 +28,8 @@
   --crgtask-color-error: #F33333;
 }
 
-a, a:hover {
+a,
+a:hover {
   color: unset;
   text-decoration: none;
 }
@@ -83,7 +84,7 @@ a, a:hover {
   padding: 0 20px;
   color: var(--crgtask-font-color-secondary);
   border-radius: 4px;
-  border: 1px solid  var(--crgtask-border-color-primary);
+  border: 1px solid var(--crgtask-border-color-primary);
 }
 
 .crgtask-form-control:focus {
@@ -107,6 +108,21 @@ a, a:hover {
   resize: none;
   height: 128px;
   padding-top: 10px;
+}
+
+.crgtask-form-error {
+  color: var(--crgtask-color-error);
+  font-size: 12px;
+  padding-left: 4px;
+  display: none;
+}
+
+.crgtask-form-control[data-invalid="true"] {
+  border: 1px solid var(--crgtask-color-error);
+}
+
+.crgtask-form-control[data-invalid="true"]~div {
+  display: unset;
 }
 
 @media (min-width: 576px) {
