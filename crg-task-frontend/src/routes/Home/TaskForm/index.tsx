@@ -3,10 +3,15 @@ import { Link } from 'react-router-dom'
 import formIcon from '../../../assets/form-icon.svg'
 import { useEffect, useState } from 'react';
 import FormInput from '../../../components/FormInput';
+import * as categoryService from '../../../services/category-service.ts'
 import * as forms from '../../../utils/forms.ts'
 import FormTextArea from '../../../components/FormTextArea/index.tsx';
+import Select from 'react-select';
+import { CategoryDTO } from '../../../models/category.ts';
 
 export default function TaskForm() {
+
+    const [categories, setCategories] = useState<CategoryDTO[]>([])
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [formData, setFormData] = useState<any>({
@@ -35,7 +40,10 @@ export default function TaskForm() {
     })
 
     useEffect(() => {
-        const result = forms.toDirty(formData, "title")
+        categoryService.findAllCategories()
+            .then(response => {
+                setCategories(response.data)
+            })
     }, [])
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -68,11 +76,12 @@ export default function TaskForm() {
                                 <div className='crgtask-form-error'>{formData.title.message}</div>
                             </div>
                             <div>
-                                <select className="crgtask-form-control crgtask-select" required>
-                                    <option value="" disabled selected>Categorias</option>
-                                    <option value="1">Valor 1</option>
-                                    <option value="2">Valor 2</option>
-                                </select>
+                                <Select
+                                    options={categories}
+                                    isMulti
+                                    getOptionLabel={(obj) => obj.name}
+                                    getOptionValue={(obj) => String(obj.id)}
+                                />
                             </div>
                             <div>
                                 <FormTextArea

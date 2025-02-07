@@ -7,7 +7,7 @@ export function findAll() {
 }
 
 export function findById(id: number) {
-    return axios.get(`${BASE_URL}/tasks/${id}`)
+    return requestBackend({ url: `tasks/${id}`})
 }
 
 export function deleteById(id: number) {
