@@ -1,8 +1,27 @@
+import './styles.css'
 import { Link } from 'react-router-dom'
 import formIcon from '../../../assets/form-icon.svg'
-import './styles.css'
+import { useState } from 'react';
+import FormInput from '../../../components/FormInput';
+import * as forms from '../../../utils/forms.ts'
 
 export default function TaskForm() {
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const [formData, setFormData] = useState<any>({
+        title: {
+            value: "",
+            id: "title",
+            name: "title",
+            type: "text",
+            placeholder: "Nome",
+        }
+    })
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function handleInputChange(event: any) {
+        setFormData(forms.update(formData, event.target.name, event.target.value))
+    }
 
     return (
         <main>
@@ -16,7 +35,11 @@ export default function TaskForm() {
                         <h2>Dados da tarefa</h2>
                         <div className="crgtask-form-controls-container">
                             <div>
-                                <input className="crgtask-form-control" type="text" placeholder="Nome" />
+                                <FormInput 
+                                    { ...formData.title }
+                                    className="crgtask-form-control"
+                                    onChange={handleInputChange}
+                                />
                             </div>
                             <div>
                                 <select className="crgtask-form-control crgtask-select" required>
@@ -25,9 +48,9 @@ export default function TaskForm() {
                                     <option value="2">Valor 2</option>
                                 </select>
                             </div>
-                            <div>
+                            {/* <div>
                                 <textarea className="crgtask-form-control crgtask-textarea" placeholder="Descrição"></textarea>
-                            </div>
+                            </div> */}
                         </div>
 
                         <div className="crgtask-product-form-buttons">
