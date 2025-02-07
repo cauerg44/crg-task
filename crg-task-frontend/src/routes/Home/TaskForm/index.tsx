@@ -1,7 +1,7 @@
 import './styles.css'
 import { Link } from 'react-router-dom'
 import formIcon from '../../../assets/form-icon.svg'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FormInput from '../../../components/FormInput';
 import * as forms from '../../../utils/forms.ts'
 
@@ -29,6 +29,16 @@ export default function TaskForm() {
         setFormData(dataValidated)
     }
 
+    function handleTurnDirty(name: string) {
+        const newFormData = forms.toDirty(formData, name)
+        setFormData(newFormData)
+    }
+
+    useEffect(() => {
+        const result = forms.toDirty(formData, "title")
+        console.log(result)
+    }, [])
+
     return (
         <main>
             <section id="crgtask-task-form-section-page" className="crgtask-container">
@@ -45,6 +55,7 @@ export default function TaskForm() {
                                     { ...formData.title }
                                     className="crgtask-form-control"
                                     onChange={handleInputChange}
+                                    onTurnDirty={handleTurnDirty}
                                 />
                                 <div className='crgtask-form-error'>{formData.title.message}</div>
                             </div>

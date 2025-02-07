@@ -117,11 +117,11 @@ a:hover {
   display: none;
 }
 
-.crgtask-form-control[data-invalid="true"] {
+.crgtask-form-control[data-dirty="true"][data-invalid="true"] {
   border: 1px solid var(--crgtask-color-error);
 }
 
-.crgtask-form-control[data-invalid="true"]~div {
+.crgtask-form-control[data-dirty="true"][data-invalid="true"]~div {
   display: unset;
 }
 

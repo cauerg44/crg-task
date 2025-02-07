@@ -31,3 +31,8 @@ export function validate(inputs: any, name: string) {
     const isInvalid = !inputs[name].validation(inputs[name].value)
     return { ...inputs, [name]: { ...inputs[name], invalid: !isInvalid.toString()}}
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function toDirty(inputs: any, name: string) {
+    return { ...inputs, [name]: { ...inputs[name], dirty: "true"}}
+}
