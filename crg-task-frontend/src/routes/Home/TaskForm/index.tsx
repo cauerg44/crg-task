@@ -66,6 +66,13 @@ export default function TaskForm() {
         setFormData(forms.dirtyAndValidate(formData, name))
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function handleSubmit(event: any) {
+        event.preventDefault()
+
+        console.log(forms.toValues(formData))
+    }
+
     return (
         <main>
             <section id="crgtask-task-form-section-page" className="crgtask-container">
@@ -74,7 +81,7 @@ export default function TaskForm() {
                         <img src={formIcon} alt="Form" />
                         <h2>Vamos deixar nosso dia produtivo 💡</h2>
                     </div>
-                    <form className="crgtask-card crgtask-form">
+                    <form className="crgtask-card crgtask-form" onSubmit={handleSubmit}>
                         <h2>Dados da tarefa</h2>
                         <div className="crgtask-form-controls-container">
                             <div>
