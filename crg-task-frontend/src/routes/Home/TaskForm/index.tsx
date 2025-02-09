@@ -8,6 +8,7 @@ import * as forms from '../../../utils/forms.ts'
 import FormTextArea from '../../../components/FormTextArea/index.tsx';
 import { CategoryDTO } from '../../../models/category.ts';
 import FormSelect from '../../../components/FormSelect/index.tsx';
+import { selectStyles } from '../../../utils/select.ts';
 
 export default function TaskForm() {
 
@@ -89,7 +90,8 @@ export default function TaskForm() {
                                 <FormSelect
                                 { ...formData.categories }
                                     options={categories}
-                                    className="crgtask-form-control"
+                                    className="crgtask-form-control crgtask-form-select-container"
+                                    styles={selectStyles}
                                     onChange={(obj: any) => {
                                         const newFormData = forms.updateAndValidate(formData, "categories", obj)
                                         console.log(newFormData.categories)

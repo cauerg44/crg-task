@@ -100,8 +100,8 @@ a:hover {
   border-radius: 4px;
 }
 
-.crgtask-select option {
-  color: var(--dsc-color-font-primary);
+.crgtask-form-select-container {
+  padding: unset;
 }
 
 .crgtask-textarea {
