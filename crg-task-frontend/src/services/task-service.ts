@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios"
 import { BASE_URL } from "../utils/system"
 import { requestBackend } from "../utils/requests"
+import { TaskDTO } from "../models/task"
 
 export function findAll() {
     return axios.get(`${BASE_URL}/tasks`)
@@ -25,6 +26,17 @@ export function finishTask(id: number) {
         method: "DELETE",
         url: `tasks/${id}`,
         withCredentials: false
+    }
+
+    return requestBackend(config)
+}
+
+export function updateRequest(obj: TaskDTO) {
+    const config: AxiosRequestConfig = {
+        method: "PUT",
+        url: `/tasks/${obj.id}`,
+        withCredentials: true,
+        data: obj
     }
 
     return requestBackend(config)

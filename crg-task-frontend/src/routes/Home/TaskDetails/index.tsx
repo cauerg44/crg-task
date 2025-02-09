@@ -51,7 +51,7 @@ export default function TaskDetails() {
     }
 
     function handleEditClick() {
-        navigate("/edit/task")
+        navigate(`/task/edit/${task.id}`);
     }
 
     function handleDialogConfirmationAnswer(answer: boolean, taskId: number) {

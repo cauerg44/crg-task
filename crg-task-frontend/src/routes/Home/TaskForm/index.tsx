@@ -1,5 +1,5 @@
 import './styles.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import formIcon from '../../../assets/form-icon.svg'
 import { useEffect, useState } from 'react';
 import FormInput from '../../../components/FormInput';
@@ -9,10 +9,17 @@ import FormTextArea from '../../../components/FormTextArea/index.tsx';
 import { CategoryDTO } from '../../../models/category.ts';
 import FormSelect from '../../../components/FormSelect/index.tsx';
 import { selectStyles } from '../../../utils/select.ts';
+import * as taskService from '../../../services/task-service.ts'
 
 export default function TaskForm() {
 
     const [categories, setCategories] = useState<CategoryDTO[]>([])
+
+    const params = useParams()
+
+    const navigate = useNavigate()
+
+    const isEditing = params.taskId !== undefined;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [formData, setFormData] = useState<any>({
@@ -76,7 +83,15 @@ export default function TaskForm() {
             return
         }
 
-        // console.log(forms.toValues(formData))
+        const requestBody = forms.toValues(formData)
+        if (isEditing) {
+            requestBody.id = params.taskId
+        }
+
+        taskService.updateRequest(requestBody)
+            .then(() => {
+                navigate("/tasks")
+            })
     }
 
     return (
@@ -101,7 +116,7 @@ export default function TaskForm() {
                             </div>
                             <div>
                                 <FormSelect
-                                { ...formData.categories }
+                                    {...formData.categories}
                                     options={categories}
                                     className="crgtask-form-control crgtask-form-select-container"
                                     styles={selectStyles}
