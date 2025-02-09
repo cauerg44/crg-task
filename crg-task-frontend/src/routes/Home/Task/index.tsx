@@ -22,7 +22,7 @@ export default function Task() {
             <section className='crgtask-container mt45'>
                 <div className='crgtask-navigate-create-new-task'>
                     <h2>Gostaria de adicionar uma tarefa? 📝</h2>
-                    <Link to="/create/task">
+                    <Link to="/task/create">
                         <ButtonPrimary text='Clique aqui' />
                     </Link>
                 </div>

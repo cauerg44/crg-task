@@ -35,7 +35,18 @@ export function updateRequest(obj: TaskDTO) {
     const config: AxiosRequestConfig = {
         method: "PUT",
         url: `/tasks/${obj.id}`,
-        withCredentials: true,
+        withCredentials: false,
+        data: obj
+    }
+
+    return requestBackend(config)
+}
+
+export function insertRequest(obj: TaskDTO) {
+    const config: AxiosRequestConfig = {
+        method: "POST",
+        url: `/tasks`,
+        withCredentials: false,
         data: obj
     }
 

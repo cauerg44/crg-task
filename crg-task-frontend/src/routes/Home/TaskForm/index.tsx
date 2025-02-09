@@ -88,7 +88,11 @@ export default function TaskForm() {
             requestBody.id = params.taskId
         }
 
-        taskService.updateRequest(requestBody)
+        const request = isEditing
+            ? taskService.updateRequest(requestBody)
+            : taskService.insertRequest(requestBody)
+
+        request
             .then(() => {
                 navigate("/tasks")
             })
