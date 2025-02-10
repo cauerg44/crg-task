@@ -79,8 +79,8 @@ export default function TaskForm() {
 
         const formDataValidated = forms.dirtyAndValidateAll(formData)
         if (forms.hasAnyInvalid(formDataValidated)) {
-            setFormData(formDataValidated)
-            return
+            /* setFormData(formDataValidated)
+            return */
         }
 
         const requestBody = forms.toValues(formData)
@@ -95,6 +95,10 @@ export default function TaskForm() {
         request
             .then(() => {
                 navigate("/tasks")
+            })
+            .catch(error => {
+                const newInputs = forms.setBackendErros(formData, error.response.data.errors)
+                setFormData(newInputs)
             })
     }
 
