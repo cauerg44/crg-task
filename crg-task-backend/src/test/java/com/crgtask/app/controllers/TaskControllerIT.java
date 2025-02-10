@@ -113,4 +113,174 @@ public class TaskControllerIT {
         result.andExpect(jsonPath("$.categories[0].id").value(1L));
         result.andExpect(jsonPath("$.categories[1].id").value(3L));
     }
+
+    @Test
+    public void insertShouldReturnUnprocessableEntityWhenTitleIsInvalid() throws Exception {
+
+        task.setTitle("ab");
+        taskDTO = new TaskDTO(task);
+
+        String jsonBody = objectMapper.writeValueAsString(taskDTO);
+
+        ResultActions result =
+                mockMvc.perform(post("/tasks")
+                        .content(jsonBody)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON));
+
+        result.andExpect(status().isUnprocessableEntity());
+    }
+
+    @Test
+    public void insertShouldReturnUnprocessableEntityWhenDescriptionIsInvalid() throws Exception {
+
+        task.setDescription("defghij");
+        taskDTO = new TaskDTO(task);
+
+        String jsonBody = objectMapper.writeValueAsString(taskDTO);
+
+        ResultActions result =
+                mockMvc.perform(post("/tasks")
+                        .content(jsonBody)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON));
+
+        result.andExpect(status().isUnprocessableEntity());
+    }
+
+    @Test
+    public void insertShouldReturnUnprocessableEntityWhenTaskHasNoCategories() throws Exception {
+
+        task.getCategories().clear();
+        taskDTO = new TaskDTO(task);
+
+        String jsonBody = objectMapper.writeValueAsString(taskDTO);
+
+        ResultActions result =
+                mockMvc.perform(post("/tasks")
+                        .content(jsonBody)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON));
+
+        result.andExpect(status().isUnprocessableEntity());
+    }
+
+    @Test
+    public void updateShouldReturnTaskDTOWhenIdExists() throws Exception {
+
+        task.setTitle("Malhar peito e estudar PHP");
+        task.setDescription("Contar e descrever os meros detalhes e treinar pesado na perna");
+        task.getCategories().clear();
+        task.getCategories().add(new Category(1L, null));
+        task.getCategories().add(new Category(4L, null));
+
+        taskDTO = new TaskDTO(task);
+
+        String jsonBody = objectMapper.writeValueAsString(taskDTO);
+
+        ResultActions result =
+                mockMvc.perform(put("/tasks/{id}", existingTaskId)
+                                .content(jsonBody)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .accept(MediaType.APPLICATION_JSON))
+                                .andDo(MockMvcResultHandlers.print());
+
+        result.andExpect(status().isOk());
+        result.andExpect(jsonPath("$.id").value(7L));
+        result.andExpect(jsonPath("$.title").value("Malhar peito e estudar PHP"));
+        result.andExpect(jsonPath("$.description").value("Contar e descrever os meros detalhes e treinar pesado na perna"));
+        result.andExpect(jsonPath("$.categories[0].id").value(1L));
+        result.andExpect(jsonPath("$.categories[1].id").value(4L));
+    }
+
+    @Test
+    public void updateShouldReturnNotFoundWhenIdDoesNotExist() throws Exception {
+
+        String jsonBody = objectMapper.writeValueAsString(taskDTO);
+
+        ResultActions result =
+                mockMvc.perform(put("/tasks/{id}", nonExistingTaskId)
+                        .content(jsonBody)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON));
+
+        result.andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void updateShouldReturnUnprocessableEntityWhenIdExistsAndInvalidTitle() throws Exception {
+
+        task.setTitle("ab");
+
+        taskDTO = new TaskDTO(task);
+
+        String jsonBody = objectMapper.writeValueAsString(taskDTO);
+
+        ResultActions result =
+                mockMvc.perform(put("/tasks/{id}", existingTaskId)
+                                .content(jsonBody)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .accept(MediaType.APPLICATION_JSON))
+                        .andDo(MockMvcResultHandlers.print());
+
+        result.andExpect(status().isUnprocessableEntity());
+    }
+
+    @Test
+    public void updateShouldReturnUnprocessableEntityWhenIdExistsAndInvalidDescription() throws Exception {
+
+        task.setDescription("de");
+
+        taskDTO = new TaskDTO(task);
+
+        String jsonBody = objectMapper.writeValueAsString(taskDTO);
+
+        ResultActions result =
+                mockMvc.perform(put("/tasks/{id}", existingTaskId)
+                                .content(jsonBody)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .accept(MediaType.APPLICATION_JSON))
+                        .andDo(MockMvcResultHandlers.print());
+
+        result.andExpect(status().isUnprocessableEntity());
+    }
+
+    @Test
+    public void updateShouldReturnUnprocessableEntityWhenIdExistsAndTaskHasNoCategories() throws Exception {
+
+        task.getCategories().clear();
+
+        taskDTO = new TaskDTO(task);
+
+        String jsonBody = objectMapper.writeValueAsString(taskDTO);
+
+        ResultActions result =
+                mockMvc.perform(put("/tasks/{id}", existingTaskId)
+                                .content(jsonBody)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .accept(MediaType.APPLICATION_JSON))
+                        .andDo(MockMvcResultHandlers.print());
+
+        result.andExpect(status().isUnprocessableEntity());
+    }
+
+    @Test
+    public void deleteShouldReturnNoContentWhenIdExists() throws Exception {
+
+        ResultActions result =
+                mockMvc.perform(delete("/tasks/{id}", existingTaskId)
+                        .accept(MediaType.APPLICATION_JSON));
+
+        result.andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void deleteShouldReturnNotFoundWhenIdDoesNotExist() throws Exception {
+
+        ResultActions result =
+                mockMvc.perform(delete("/products/{id}", nonExistingTaskId)
+                        .accept(MediaType.APPLICATION_JSON));
+
+        result.andExpect(status().isNotFound());
+    }
 }
