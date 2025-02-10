@@ -48,9 +48,11 @@ public class TaskControllerIT {
         existingTaskId = 7L;
         nonExistingTaskId = 404L;
 
-        Category category = new Category(5L, null);
+        Category cat1 = new Category(1L, null);
+        Category cat2 = new Category(3L, null);
         task = new Task(null, "Arrumar meu setup", "Organizar meu setup para eu começar a trabalhar de home-office");
-        task.getCategories().add(category);
+        task.getCategories().add(cat1);
+        task.getCategories().add(cat2);
         taskDTO = new TaskDTO(task);
     }
 
@@ -106,7 +108,7 @@ public class TaskControllerIT {
 
         result.andExpect(status().isCreated());
         result.andExpect(jsonPath("$.id").value(9L));
-        result.andExpect(jsonPath("$.name").value("Arrumar meu setup"));
+        result.andExpect(jsonPath("$.title").value("Arrumar meu setup"));
         result.andExpect(jsonPath("$.description").value("Organizar meu setup para eu começar a trabalhar de home-office"));
         result.andExpect(jsonPath("$.categories[0].id").value(1L));
         result.andExpect(jsonPath("$.categories[1].id").value(3L));
