@@ -36,7 +36,7 @@ export default function TaskDetails() {
             .catch(() => {
                 navigate("/tasks")
             })
-    }, [params.taskId])
+    }, [])
 
     function handleDialogInfoClose() {
         setDialogInfoData({ ...dialogInfoData, visible: false })
@@ -51,7 +51,7 @@ export default function TaskDetails() {
     }
 
     function handleEditClick() {
-        navigate(`/task/edit/${task.id}`);
+        navigate(`/task/edit/${task?.id}`);
     }
 
     function handleDialogConfirmationAnswer(answer: boolean, taskId: number) {
