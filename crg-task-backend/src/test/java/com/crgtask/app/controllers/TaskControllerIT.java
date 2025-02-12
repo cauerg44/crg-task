@@ -278,7 +278,7 @@ public class TaskControllerIT {
     public void deleteShouldReturnNotFoundWhenIdDoesNotExist() throws Exception {
 
         ResultActions result =
-                mockMvc.perform(delete("/products/{id}", nonExistingTaskId)
+                mockMvc.perform(delete("/tasks/{id}", nonExistingTaskId)
                         .accept(MediaType.APPLICATION_JSON));
 
         result.andExpect(status().isNotFound());
